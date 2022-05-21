@@ -1,0 +1,8 @@
+<p>Details :</p>
+<br/>
+<div *ngIf="task">
+  <h3>Title : {{task.title}}</h3>
+  <h3>Description : {{task.description}}</h3>
+  <h3>Id : {{task.id}}</h3>
+  <h3>Created : {{task.created | date:'dd/MM/yyyy, HH:mm'}}</h3>
+</div>

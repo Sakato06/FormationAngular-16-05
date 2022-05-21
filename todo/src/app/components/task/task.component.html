@@ -1,0 +1,16 @@
+<div>
+  <input [(ngModel)]="task.title">
+  <input [(ngModel)]="task.description">
+  <li
+  [ngClass]="'list-group-item list-group-item-' + getVariant()">
+    <p>{{ task.id }} : {{ task.title }} =
+      <span [ngClass]="'d-inline float-right badge badge-' + getVariant()">{{ getComplete() }}</span>!
+    </p>
+    <p>{{ task.description }}</p>
+    <p>{{ task.created }}</p>
+    <p>{{ task.created | date:'dd/MM/yyyy hh:mm' }}</p>
+  </li>
+  <p><button mat-raised-button [color]="task.completed ? 'accent' : 'primary'" (click)="toggleComplete()">{{ getButtonText() }}</button></p>
+  <p><a [routerLink]="['/todolist', task.id]">Details</a></p>
+  <button mat-raised-button color='warn' (click)="todo.removeTask(task.id)">Effacer</button>
+</div>

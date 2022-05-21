@@ -1,0 +1,42 @@
+<form  [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)">
+  <table>
+    <tr>
+      <td><label for="firstName">firstName</label></td>
+      <td><input type="text" formControlName="firstName" ></td>
+    </tr>
+    <tr>
+      <td><label for="lastName">lastName</label></td>
+      <td><input type="text" formControlName="lastName" ></td>
+    </tr>
+    <tr>
+      <td><label for="email">email</label></td>
+      <td><input type="text" formControlName="email" ></td>
+    </tr>
+    <tr>
+      <td><label for="team">team</label></td>
+      <td>
+        <select formControlName="team" >
+          <option *ngFor="let team of teams; let i = index" [value]="team.id">
+            {{team.name}}
+          </option>
+        </select>
+    </tr>
+
+    <tr formArrayName="skills" *ngFor="let s of skills.controls; let i = index">
+      <td>
+        <label>
+          Skill name({{i}})
+        </label>
+      </td>
+      <td><input [formControlName]="i"></td>
+      <td><button type="button" (click)="removeSkills(i)">Delete</button></td>
+    </tr>
+
+  <button type="button" (click)="addSkills()">Add Skill</button>
+    <tr>
+      <td></td>
+      <td><button type="submit" [disabled]="!userForm.valid" >Créer</button></td>
+    </tr>
+
+  </table>
+</form>
